@@ -1,3 +1,27 @@
+```
+sudo apt install docker.io
+
+sudo apt  install docker-compose
+
+sudo systemctl start docker.service
+
+sudo systemctl status docker.service
+
+sudo docker-compose up -d
+
+sudo apt install python3-pip
+
+cd ~/MyGitHub/openai-cookbook-python/examples/vector_databases/redis/
+
+wget https://cdn.openai.com/API/examples/data/vector_database_wikipedia_articles_embedded.zip
+
+# redis
+config set requirepass password01!
+
+```
+
+
+
 
 # Redis
 
