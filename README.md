@@ -1,3 +1,5 @@
+
+
 # OpenAI Cookbook
 
 The OpenAI Cookbook shares example code for accomplishing common tasks with the [OpenAI API].
