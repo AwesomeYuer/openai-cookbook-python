@@ -20,29 +20,27 @@ from wsgiref.simple_server import make_server
 
 app = Flask(__name__)
 
-@app.route("/wikipedia")
+@app.route("/wikipedia/python-25k")
 def hello_world():
     # response = Response('Flask Python!')
     # del response.headers['Connection']
-    return "Flask Python!"
+    SearchProcess()
+    return "Flask wikipedia python-25k!"
 
-app.run()
+# app.run()
+
+# hello.py
+@app.route("/wikipedia/python-25k")
+def application(environ, start_response):
+    # 设置响应头
+    headers = [('Content-Type', 'text/html')]
+    # 调用 start_response 函数来发送响应头
+    start_response('200 OK', headers)
+    # 返回响应体
+    return [b'wsgi']
 
 
-PORT = 5000
-
-class MyHandler(SimpleHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
-        self.end_headers()
-        message = "python"
-        print(message)
-        # SearchProcess()
-        
-        self.wfile.write(bytes(message, "utf8"))
-        
-
-# with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
-#     print("serving at port", PORT)
-#     httpd.serve_forever()
+# 创建一个服务器，IP地址为空，端口是8000，处理函数是application:
+httpd = make_server('0.0.0.0', 5000, application)
+# 开始监听HTTP请求:
+httpd.serve_forever()
