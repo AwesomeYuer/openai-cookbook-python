@@ -7,12 +7,14 @@ Accept-Encoding: gzip
     "params": null,
     "limit": 20,
     "offset": 0,
-    "with_payload": true,
+    "with_payload": {
+      "exclude": ["content_vector","title_vector"]
+    },
     "with_vector": false,
     "vector": {
-        "name": "title",
+        "name": "content",
         "vector": [
-            0.608665406703949,
+            0.908665406703949,
             0.6131669878959656,
             0.4780552387237549,
             0.054452020674943924,
