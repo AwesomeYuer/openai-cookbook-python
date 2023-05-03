@@ -1,5 +1,48 @@
 @baseAddress=http://localhost:6333
 
+
+### create
+PUT {{baseAddress}}/collections/small
+Content-Type: application/json
+
+{
+    "vectors": {
+        "size": 4,
+        "distance": "Cosine"
+    }
+}
+
+
+### add
+PUT {{baseAddress}}/collections/small/points?wait=true
+Content-Type: application/json
+
+{
+    "points": [
+        {"id": 20, "vector": [0.25, 0.63, 0.31, 0.42], "payload": {"city": "Berlin"}},
+        {"id": 21, "vector": [0.29, 0.83, 0.31, 0.42], "payload": {"city": ["Berlin", "London"] }},
+        {"id": 22, "vector": [0.26, 0.53, 0.31, 0.42], "payload": {"city": ["Berlin", "Moscow"] }},
+        {"id": 23, "vector": [0.28, 0.03, 0.31, 0.42], "payload": {"city": ["London", "Moscow"] }},
+        {"id": 24, "vector": [0.24, 0.13, 0.31, 0.42], "payload": {"count": [0] }},
+        {"id": 25, "vector": [0.25, 0.03, 0.31, 0.42]},
+        {"id": 26, "vector": [0.25, 0.63, 0.31, 0.42], "payload": {"city": "Berlin"}},
+        {"id": 27, "vector": [0.29, 0.83, 0.31, 0.42], "payload": {"city": ["Berlin", "London"] }},
+        {"id": 28, "vector": [0.26, 0.53, 0.31, 0.42], "payload": {"city": ["Berlin", "Moscow"] }},
+        {"id": 29, "vector": [0.28, 0.03, 0.31, 0.42], "payload": {"city": ["London", "Moscow"] }}
+    ]
+}
+
+
+### search
+POST {{baseAddress}}/collections/small/points/search
+Content-Type: application/json
+
+{
+        "vector": [0.2,0.1,0.9,0.7],
+        "top": 3
+}
+
+
 ###  count
 GET {{baseAddress}}/collections/Articles
 Content-Type: application/json
