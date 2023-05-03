@@ -1,11 +1,19 @@
+@baseAddress=http://localhost:6333
+
 ###  count
-POST http://localhost:6333/collections/Articles/points/count
+GET {{baseAddress}}/collections/Articles
+Content-Type: application/json
+
+
+
+###  count
+POST {{baseAddress}}/collections/Articles/points/count
 Content-Type: application/json
 
 {"filter": null, "exact": true}
 
 ### search
-POST http://localhost:6333/collections/Articles/points/search
+POST {{baseAddress}}/collections/Articles/points/search
 # Content-Encoding: gzip
 Accept-Encoding: gzip
 
