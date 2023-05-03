@@ -1,3 +1,12 @@
+#  sadasd
+POST http://kc-misc-001-vm.koreacentral.cloudapp.azure.com:6333/collections/Articles/points/count
+Content-Type: application/json
+
+{"filter": null, "exact": true}
+
+
+
+#11111
 POST http://localhost:6333/collections/Articles/points/search
 # Content-Encoding: gzip
 Accept-Encoding: gzip
