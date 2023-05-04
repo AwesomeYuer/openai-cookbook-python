@@ -2,33 +2,33 @@
 
 
 ### create
-PUT {{baseAddress}}/collections/small
+PUT {{baseAddress}}/collections/embeddings
 Content-Type: application/json
 
 {
     "vectors": {
-        "size": 4,
+        "size": 1536,
         "distance": "Cosine"
     }
 }
 
 
 ### add
-PUT {{baseAddress}}/collections/small/points?wait=true
+PUT {{baseAddress}}/collections/small-uuid/points?wait=true
 Content-Type: application/json
 
 {
     "points": [
-        {"id": 20, "vector": [0.25, 0.63, 0.31, 0.42], "payload": {"city": "Berlin"}},
-        {"id": 21, "vector": [0.29, 0.83, 0.31, 0.42], "payload": {"city": ["Berlin", "London"] }},
-        {"id": 22, "vector": [0.26, 0.53, 0.31, 0.42], "payload": {"city": ["Berlin", "Moscow"] }},
-        {"id": 23, "vector": [0.28, 0.03, 0.31, 0.42], "payload": {"city": ["London", "Moscow"] }},
-        {"id": 24, "vector": [0.24, 0.13, 0.31, 0.42], "payload": {"count": [0] }},
-        {"id": 25, "vector": [0.25, 0.03, 0.31, 0.42]},
-        {"id": 26, "vector": [0.25, 0.63, 0.31, 0.42], "payload": {"city": "Berlin"}},
-        {"id": 27, "vector": [0.29, 0.83, 0.31, 0.42], "payload": {"city": ["Berlin", "London"] }},
-        {"id": 28, "vector": [0.26, 0.53, 0.31, 0.42], "payload": {"city": ["Berlin", "Moscow"] }},
-        {"id": 29, "vector": [0.28, 0.03, 0.31, 0.42], "payload": {"city": ["London", "Moscow"] }}
+        {"id": "0CC1FF12-D0CD-4518-B445-A3A1F2501120", "vector": [0.25, 0.63, 0.31, 0.42], "payload": {"city": "Berlin"}},
+        {"id": "1CC2FF12-D0CD-4518-B445-A3A1F2501121", "vector": [0.29, 0.83, 0.31, 0.42], "payload": {"city": ["Berlin", "London"] }},
+        {"id": "2CC3FF12-D0CD-4518-B445-A3A1F2501122", "vector": [0.26, 0.53, 0.31, 0.42], "payload": {"city": ["Berlin", "Moscow"] }},
+        {"id": "3CC4FF12-D0CD-4518-B445-A3A1F2501123", "vector": [0.28, 0.03, 0.31, 0.42], "payload": {"city": ["London", "Moscow"] }},
+        {"id": "4CC5FF12-D0CD-4518-B445-A3A1F2501124", "vector": [0.24, 0.13, 0.31, 0.42], "payload": {"count": [0] }},
+        {"id": "5CC6FF12-D0CD-4518-B445-A3A1F2501125", "vector": [0.25, 0.03, 0.31, 0.42]},
+        {"id": "6CC7FF12-D0CD-4518-B445-A3A1F2501126", "vector": [0.25, 0.63, 0.31, 0.42], "payload": {"city": "Berlin"}},
+        {"id": "7CC8FF12-D0CD-4518-B445-A3A1F2501127", "vector": [0.29, 0.83, 0.31, 0.42], "payload": {"city": ["Berlin", "London"] }},
+        {"id": "8CC9FF12-D0CD-4518-B445-A3A1F2501128", "vector": [0.26, 0.53, 0.31, 0.42], "payload": {"city": ["Berlin", "Moscow"] }},
+        {"id": "9CC0FF12-D0CD-4518-B445-A3A1F2501129", "vector": [0.28, 0.03, 0.31, 0.42], "payload": {"city": ["London", "Moscow"] }}
     ]
 }
 
@@ -39,15 +39,20 @@ Content-Type: application/json
 
 {
         "vector": [0.2,0.1,0.9,0.7],
-        "top": 3
+        "top": 50,
+        "with_payload": true
 }
 
 
 ###  count
-GET {{baseAddress}}/collections/Articles
+GET {{baseAddress}}/collections/embeddings
 Content-Type: application/json
 
+###  count
+POST {{baseAddress}}/collections/embeddings/points/count
+Content-Type: application/json
 
+{"filter": null, "exact": true}
 
 ###  count
 POST {{baseAddress}}/collections/Articles/points/count
